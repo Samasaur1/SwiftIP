@@ -1,7 +1,7 @@
 import Foundation
 
 public final class IP {
-    class var publicIP: String? {
+    public class var publicIP: String? {
         let semaphore = DispatchSemaphore(value: 0)
         let url = URL(string: "https://icanhazip.com")!//i can haz ip
         let request = URLRequest(url: url)
@@ -19,7 +19,7 @@ public final class IP {
         return ip
     }
     
-    class var localIP: String? {
+    public class var localIP: String? {
         var addresses = [String]()
         
         // Get list of all interfaces on the local machine:
