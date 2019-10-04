@@ -1,0 +1,43 @@
+language: generic
+sudo: false
+dist: trusty
+
+stages:
+- test
+- name: deploy
+  if: branch = master AND type = push
+
+os:
+- osx
+
+osx_image:
+- xcode10.3
+
+env:
+- SWIFT_VERSION=4.2.4
+- SWIFT_VERSION=5.0.1
+
+jobs:
+  include:
+  - stage: test
+    if: branch != master OR type = pull_request
+    osx_image: xcode11
+    os: osx
+    env: SWIFT_VERSION=5.0.1
+    script: swift test
+  - stage: deploy
+    if: branch = master AND type = push
+    osx_image: xcode11
+    os: osx
+    env: SWIFT_VERSION=5.0.1
+    script: bash .deploy-docs.sh
+
+cache:
+  directories:
+  - .build
+
+install:
+- eval "$(curl -sL https://swiftenv.fuller.li/install.sh || curl -sL https://raw.githubusercontent.com/kylef/swiftenv/master/docs/install.sh)"
+
+script:
+- swift test
