@@ -11,7 +11,7 @@ Add the following to your `Package.swift`:
 
 Or use [Ice](https://github.com/jakeheis/Ice):
 ```sh
-$ ice install SwiftIP
+$ ice addF SwiftIP
 ```
 
 ## Usage
