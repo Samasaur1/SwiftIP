@@ -1,0 +1,10 @@
+clean: true
+author: Samasaur
+author_url: https://github.com/Samasaur1
+module: SwiftIP
+module_version: 1.1.0
+# docset_icon:
+github_url: https://github.com/Samasaur1/SwiftIP
+# github_file_prefix:
+skip_undocumented: true
+hide_documentation_coverage: false
