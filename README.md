@@ -6,7 +6,7 @@ A library to help with getting IP addresses in Swift.
 
 Add the following to your `Package.swift`:
 ```swift
-.package(url: "https://github.com/Samasaur1/SwiftIP.git", from: "1.1.0"),
+.package(url: "https://github.com/Samasaur1/SwiftIP.git", from: "2.0.0"),
 ```
 
 Or use [Ice](https://github.com/jakeheis/Ice):
