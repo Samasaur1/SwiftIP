@@ -1,8 +1,6 @@
 import Foundation
 
-/// The class that manages finding the device's IP address(es).
 public final class IP {
-    /// The version of the Internet Protocol (IP) that you want to fetch
     public enum Version: String {
         case IPv4 = "ipv4"
         case IPv6 = "ipv6"
@@ -10,13 +8,6 @@ public final class IP {
 
     private init() {}
 
-    /// Get the device's public IP address, if available.
-    ///
-    /// This currently relies on https://icanhazip.com so if that site is down, it will not work.
-    /// It will time out after 5 seconds.
-    ///
-    /// - Parameter version: IPv4 vs IPv6.
-    /// - Returns: The device's public IP address.
     public class func `public`(_ version: Version = .IPv4) -> String? {
         let semaphore = DispatchSemaphore(value: 0)
         let url = URL(string: "https://\(version.rawValue).icanhazip.com")!//i can haz ip
@@ -34,14 +25,10 @@ public final class IP {
         }
 
         task.resume()
-        _ = semaphore.wait(timeout: .now() + .seconds(5))
+        semaphore.wait()
         return ip
     }
 
-    /// Get the device's local IP address, if available.
-    ///
-    /// - Parameter version: IPv4 vs IPv6.
-    /// - Returns: The device's local IP address.
     public class func local(_ version: Version = .IPv4) -> String? {
         var addresses = [String]()
 
