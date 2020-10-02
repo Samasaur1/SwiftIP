@@ -6,7 +6,7 @@ A library to help with getting IP addresses in Swift.
 
 Add the following to your `Package.swift`:
 ```swift
-.package(url: "https://github.com/Samasaur1/SwiftIP.git", from: "1.1.0"),
+.package(url: "https://github.com/Samasaur1/SwiftIP.git", from: "2.0.0"),
 ```
 
 Or use [Ice](https://github.com/jakeheis/Ice):
@@ -22,16 +22,11 @@ Effectively, however, you do this:
 ```swift
 import SwiftIP
 
-let localIP: String
-do {
-    localIP = try IP.local()
-} catch is IP.Error {
+guard let localIP = IP.local() else {
     fatalError("Could not find local IP")
 }
 
-let publicIP: String? = IP.publicIP
+let publicIP: String? = IP.public()
 
 print("Local IP: \(localIP); public IP: \(publicIP ?? "Not connected")")
 ```
-
-If you want to capture the error as a constant, you can use `catch let error as IP.error`, but as of 1.1.0 the errors don't have any more information.
