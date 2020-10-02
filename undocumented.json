@@ -2,9 +2,16 @@
   "warnings": [
     {
       "file": "/Users/travis/build/Samasaur1/SwiftIP/Sources/SwiftIP/SwiftIP.swift",
-      "line": 3,
-      "symbol": "IP",
-      "symbol_kind": "source.lang.swift.decl.class",
+      "line": 7,
+      "symbol": "IP.Version.IPv4",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Samasaur1/SwiftIP/Sources/SwiftIP/SwiftIP.swift",
+      "line": 8,
+      "symbol": "IP.Version.IPv6",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     }
   ],
