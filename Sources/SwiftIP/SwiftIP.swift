@@ -4,7 +4,9 @@ import Foundation
 public final class IP {
     /// The version of the Internet Protocol (IP) that you want to fetch
     public enum Version: String {
+		/// IPv4 address (e.g. 192.168.0.1).
         case IPv4 = "ipv4"
+		/// IPv6 address (e.g. 2001:0db8:85a3:0000:0000:8a2e:0370:7334).
         case IPv6 = "ipv6"
     }
 
