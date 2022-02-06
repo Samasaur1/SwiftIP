@@ -1,5 +1,18 @@
 import Foundation
 
+#if !os(macOS)
+import FoundationNetworking
+extension sockaddr {
+    var sa_len: Int {
+        switch Int32(sa_family) {
+        case AF_INET: return MemoryLayout<sockaddr_in>.size
+        case AF_INET6: return MemoryLayout<sockaddr_in6>.size
+        default: return MemoryLayout<sockaddr_storage>.size // something else
+        }
+    }
+}
+#endif
+
 /// The class that manages finding the device's IP address(es).
 public final class IP {
     /// The version of the Internet Protocol (IP) that you want to fetch
@@ -57,7 +70,11 @@ public final class IP {
                 guard let pointer = ptr else {
                     return nil
                 }
+#if os(macOS)
                 let flags = Int32(pointer.pointee.ifa_flags)
+#else
+                let flags = Int(pointer.pointee.ifa_flags)
+#endif
                 var addr = pointer.pointee.ifa_addr.pointee
 
                 // Check for running IPv4, IPv6 interfaces. Skip the loopback interface.
