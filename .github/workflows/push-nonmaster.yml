@@ -17,6 +17,8 @@ jobs:
             swift: "4.2"
           - os: macos-10.15
             swift: "4.2"
+          - os: macos-10.15
+            swift: "5.1"
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v2
