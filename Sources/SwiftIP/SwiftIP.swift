@@ -1,7 +1,10 @@
 import Foundation
 
-#if !os(macOS)
+#if canImport(FoundationNetworking)
 import FoundationNetworking
+#endif
+
+#if !os(macOS)
 extension sockaddr {
     var sa_len: Int {
         switch Int32(sa_family) {
