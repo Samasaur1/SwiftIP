@@ -12,9 +12,11 @@ jobs:
       matrix:
         os: [macos-10.15, macos-latest, ubuntu-18.04, ubuntu-latest]
         swift: ["4.2", "5.0", "5.1", "5.2", "5.3", "5.4", "5.5"]
-          #exclude:
-          #- os: macos-latest
-          #  swift: "4.2"
+        exclude:
+          - os: macos-latest
+            swift: "4.2"
+          - os: macos-10.15
+            swift: "4.2"
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v2
