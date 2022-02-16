@@ -2,7 +2,7 @@ clean: true
 author: Samasaur
 author_url: https://github.com/Samasaur1
 module: SwiftIP
-module_version: 2.2.0
+module_version: 2.2.1
 # docset_icon:
 github_url: https://github.com/Samasaur1/SwiftIP
 # github_file_prefix:
