@@ -73,10 +73,10 @@ public final class IP {
                 guard let pointer = ptr else {
                     return nil
                 }
-#if os(macOS)
-                let flags = Int32(pointer.pointee.ifa_flags)
-#else
+#if os(Linux)
                 let flags = Int(pointer.pointee.ifa_flags)
+#else
+                let flags = Int32(pointer.pointee.ifa_flags)
 #endif
                 var addr = pointer.pointee.ifa_addr.pointee
 
