@@ -73,7 +73,11 @@ public final class IP {
                 guard let pointer = ptr else {
                     return nil
                 }
+#if os(Linux)
+                let flags = Int(pointer.pointee.ifa_flags)
+#else
                 let flags = Int32(pointer.pointee.ifa_flags)
+#endif
                 var addr = pointer.pointee.ifa_addr.pointee
 
                 // Check for running IPv4, IPv6 interfaces. Skip the loopback interface.
